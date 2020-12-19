@@ -32,7 +32,7 @@ public class Blog {
     @JoinColumn(name = "Member_seq")
     private Member member;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     @JoinColumn(name = "Post_seq")
     private List<Post> postList = new ArrayList<>();
 
