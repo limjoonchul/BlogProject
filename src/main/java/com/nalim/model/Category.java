@@ -10,9 +10,9 @@ import javax.persistence.*;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = "Category_name"))
 public class Category {
-    @Id
+    @Id @GeneratedValue
     private Long seq;
-    
+
     @Column(name = "Category_name")
     private String name;
 

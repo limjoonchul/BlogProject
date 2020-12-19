@@ -10,7 +10,7 @@ import java.util.Date;
 @Setter
 @Entity
 public class Comment {
-    @Id
+    @Id @GeneratedValue
     private Long seq;
 
     private String content;
