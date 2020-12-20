@@ -13,7 +13,7 @@ public class Category {
     @Id @GeneratedValue
     private Long seq;
 
-    @Column(name = "Category_name")
+    @Column(name = "Category_name",unique = true, nullable = false, columnDefinition = "varchar(20)")
     private String name;
 
     @Lob

@@ -2,6 +2,7 @@ package com.nalim.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,12 +17,14 @@ public class Post {
     @Id @GeneratedValue
     private Long seq;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "varchar(50)")
     private String title;
 
+    @Column(nullable = false, columnDefinition = "text")
     private String content;
 
     @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private Date creaDate;
 
     @ManyToOne

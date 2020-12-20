@@ -12,15 +12,16 @@ public class Member {
     @Id
     private Long seq;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false, columnDefinition = "varchar(20)")
     private String id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "varchar(20)")
     private String password;
 
     @Transient
     private String passwordCheck;
 
+    @Column(nullable = false, columnDefinition = "varchar(20)")
     private String name;
 
     @Enumerated(EnumType.STRING)
