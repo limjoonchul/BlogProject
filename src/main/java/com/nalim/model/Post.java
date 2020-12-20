@@ -12,6 +12,7 @@ import java.util.List;
 @Setter
 @Entity
 public class Post {
+
     @Id @GeneratedValue
     private Long seq;
 
@@ -28,7 +29,7 @@ public class Post {
     private Member member;
 
     @OneToMany
-    @JoinColumn(name = "Category_seq")
+//    @JoinColumn(name = "Category_seq") => OneToMany에서는 JoinColumn을 안해줘도됨
     private List<Category> categoryList = new ArrayList<>();
 
     @ManyToOne
@@ -36,7 +37,7 @@ public class Post {
     private Blog blog;
 
     @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)  // comment에서 post를 참조하는 필드명
-    @JoinColumn(name = "Comment_seq")
+//    @JoinColumn(name = "Comment_seq")  => OneToMany에서는 JoinColumn을 안해줘도됨
     List<Comment> commentList = new ArrayList<>();
 
 }

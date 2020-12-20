@@ -33,7 +33,7 @@ public class Blog {
     private Member member;
 
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
-    @JoinColumn(name = "Post_seq")
+//    @JoinColumn(name = "Post_seq") => OneToMany에서는 JoinColumn을 안해줘도됨
     private List<Post> postList = new ArrayList<>();
 
 }
