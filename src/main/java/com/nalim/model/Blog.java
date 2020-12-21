@@ -29,7 +29,7 @@ public class Blog {
     private List<String> tag;
 
     @Temporal(TemporalType.DATE)
-//    @CreationTimestamp
+    @CreationTimestamp
     private Date createDate;
 
 //    @Temporal(TemporalType.DATE)
