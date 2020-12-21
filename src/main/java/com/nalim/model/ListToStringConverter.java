@@ -9,11 +9,17 @@ public class ListToStringConverter implements AttributeConverter<List<String>, S
 
     @Override
     public String convertToDatabaseColumn(List<String> attribute) {
+        if(attribute == null) {
+            return null;
+        }
         return String.join(SPLIT_CHA,attribute);
     }
 
     @Override
     public List<String> convertToEntityAttribute(String dbData) {
+        if(dbData == null) {
+            return null;
+        }
         return Arrays.asList(dbData.split(SPLIT_CHA));
     }
 }

@@ -36,21 +36,20 @@ public class BlogRepositoryTest {
         memberRepo.save(member);
 
 
-        List<String> tagList = new ArrayList<>();
-        
-        tagList.add("음식");
-        tagList.add("게임");
-        tagList.add("음악");
+//        List<String> tagList = new ArrayList<>();
+//
+//        tagList.add("음식");
+//        tagList.add("게임");
+//        tagList.add("음악");
 
-        List<Post> postList = new ArrayList<>();
+//        List<Post> postList = new ArrayList<>();
 
         Blog blog = new Blog();
         blog.setMember(memberRepo.findById(1L).get());
         blog.setDescription("블로그의 블로그입니다");
         blog.setName("블로그");
-        blog.setPostList(postList);
-        blog.setTag(tagList);
-
+//        blog.setPostList(postList);
+//        blog.setTag(tagList);
         blogRepo.save(blog);
 
     }
