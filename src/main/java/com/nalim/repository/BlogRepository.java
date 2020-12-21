@@ -11,4 +11,6 @@ import java.util.Optional;
 
 public interface BlogRepository extends CrudRepository<Blog, Long> {
 
+
+
 }

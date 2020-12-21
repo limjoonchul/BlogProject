@@ -8,14 +8,11 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.annotation.Commit;
+
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
-@Commit
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BlogRepositoryTest {
@@ -44,8 +41,10 @@ public class BlogRepositoryTest {
         blog.setDescription("블로그의 블로그입니다");
         blog.setName("태그도 입력되라");
 
+
         blogRepo.save(blog);
 
+        Assertions.assertEquals("태그없음", blogRepo.findById(2L).get().getTag());
 
     }
 

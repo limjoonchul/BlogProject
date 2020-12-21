@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.DateType;
 
@@ -18,6 +19,7 @@ import java.util.StringTokenizer;
 @Getter
 @ToString
 @Entity
+@DynamicInsert
 public class Blog {
     @Id @GeneratedValue
     private Long seq;
@@ -28,8 +30,7 @@ public class Blog {
     @Column(nullable = false, columnDefinition = "varchar(50)")
     private String description;
 
-    @Column(columnDefinition = "varchar(250) default '태그없음'")
-//    @ColumnDefault("태그 없음")
+    @Column(columnDefinition = "varchar(255) default '태그없음'")
     private String tag;
 
     @Temporal(TemporalType.DATE)
