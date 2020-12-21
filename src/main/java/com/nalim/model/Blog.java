@@ -2,6 +2,8 @@ package com.nalim.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.DateType;
@@ -14,6 +16,7 @@ import java.util.StringTokenizer;
 
 @Setter
 @Getter
+@ToString
 @Entity
 public class Blog {
     @Id @GeneratedValue
@@ -25,8 +28,9 @@ public class Blog {
     @Column(nullable = false, columnDefinition = "varchar(50)")
     private String description;
 
-    @Convert(converter = ListToStringConverter.class)
-    private List<String> tag;
+    @Column(columnDefinition = "varchar(250) default '태그없음'")
+//    @ColumnDefault("태그 없음")
+    private String tag;
 
     @Temporal(TemporalType.DATE)
     @CreationTimestamp
