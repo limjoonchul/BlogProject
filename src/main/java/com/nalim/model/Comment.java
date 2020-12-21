@@ -13,6 +13,7 @@ public class Comment {
     @Id @GeneratedValue
     private Long seq;
 
+    @Column(nullable = false, columnDefinition = "text")
     private String content;
 
     @Temporal(TemporalType.TIMESTAMP)
