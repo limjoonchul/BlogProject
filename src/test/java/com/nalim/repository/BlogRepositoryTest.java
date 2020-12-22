@@ -36,11 +36,11 @@ class BlogRepositoryTest {
         Blog blog = new Blog();
         blog.setMember(memberRepo.findById(1L).get());
         blog.setDescription("블로그의 블로그입니다");
-        blog.setName("태그도 입력되라");
+        blog.setName("블로그입력");
 
         blogRepo.save(blog);
 
-        assertThat(blogRepo.findById(1L).get().getTag()).isEqualTo("태그없음");
+        assertThat(blogRepo.findByName("블로그입력").get().getTag()).isEqualTo("태그없음");
 
     }
 
@@ -90,7 +90,35 @@ class BlogRepositoryTest {
 
         assertThat(findBlog.getMember().getId()).isEqualTo("user");
 
+    }
+
+    @Test
+    public void findBlogByName() {
+
+        Blog blog = new Blog();
+        blog.setDescription("블로그입니다");
+        blog.setName("찾을블로그");
+        blogRepo.save(blog);
+
+        Blog findBlog = blogRepo.findByName("찾을블로그").get();
+
+        assertThat(findBlog.getName()).isEqualTo("찾을블로그");
+
 
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
