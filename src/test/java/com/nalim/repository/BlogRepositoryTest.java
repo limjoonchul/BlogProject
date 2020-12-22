@@ -64,7 +64,7 @@ class BlogRepositoryTest {
         }
 
         List<Blog> findList = blogRepo.findBlogByNameContaining("findByName");
-//        Blog findName = blogRepo.findBlogByName("findByName1");
+
 
         assertThat(findList.size()).isEqualTo(10);
 

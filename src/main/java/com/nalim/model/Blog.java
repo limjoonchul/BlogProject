@@ -21,7 +21,8 @@ import java.util.StringTokenizer;
 @Entity
 @DynamicInsert
 public class Blog {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(generator = "seq")
     private Long seq;
 
     @Column(unique = true, nullable = false, updatable = false, columnDefinition = "varchar(20)")
