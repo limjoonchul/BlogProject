@@ -3,20 +3,19 @@ package com.nalim.repository;
 import com.nalim.model.Blog;
 import com.nalim.model.Member;
 import com.nalim.model.Role;
-import org.junit.Test;
+
 import org.junit.jupiter.api.Assertions;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import org.springframework.test.context.junit4.SpringRunner;
-
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class BlogRepositoryTest {
+class BlogRepositoryTest {
 
     @Autowired
     BlogRepository blogRepo;
@@ -24,12 +23,10 @@ public class BlogRepositoryTest {
     @Autowired
     MemberRepository memberRepo;
 
-
-
     @Test
     public void saveBlog() {
         Member member = new Member();
-        member.setId("findName");
+        member.setId("user");
         member.setRole(Role.ROLE_MEMBER);
         member.setPassword("user");
         member.setName("유저네임");
@@ -43,9 +40,10 @@ public class BlogRepositoryTest {
 
         blogRepo.save(blog);
 
-        Assertions.assertEquals("태그없음", blogRepo.findById(2L).get().getTag());
+        assertThat(blogRepo.findById(2L).get().getTag()).isEqualTo("태그없음");
 
     }
+
 
     @Test
     public void findByName() {
@@ -68,12 +66,7 @@ public class BlogRepositoryTest {
         List<Blog> findList = blogRepo.findBlogByNameContaining("findByName");
 //        Blog findName = blogRepo.findBlogByName("findByName1");
 
+        assertThat(findList.size()).isEqualTo(10);
 
-        Assertions.assertEquals(10, findList.size());
-//        System.out.println("============> "+ findName);
-//        Assertions.assertEquals("findByName1", findName);
     }
-
-
-
 }

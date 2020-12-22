@@ -2,18 +2,16 @@ package com.nalim.repository;
 
 import com.nalim.model.Member;
 import com.nalim.model.Role;
-import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class MemberRepositoryTest {
+class MemberRepositoryTest {
 
     @Autowired
     MemberRepository memberRepo;
@@ -29,8 +27,7 @@ public class MemberRepositoryTest {
 
         memberRepo.save(member);
 
-        Assertions.assertEquals("user", memberRepo.findMemberById("user").get().getId() );
-        
+        assertThat(memberRepo.findMemberById("user").get().getId()).isEqualTo("user");
 
     }
 
@@ -47,8 +44,10 @@ public class MemberRepositoryTest {
 
         String result = memberRepo.findMemberByName("이름찾기").get().getName();
 
-        Assertions.assertEquals("이름찾기", result );
+        assertThat(result).isEqualTo("이름찾기");
 
     }
+
+
 
 }
