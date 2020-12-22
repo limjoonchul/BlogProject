@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,10 +27,10 @@ class BlogRepositoryTest {
     @Test
     public void saveBlog() {
         Member member = new Member();
-        member.setId("user");
+        member.setId("saveUser");
         member.setRole(Role.ROLE_MEMBER);
-        member.setPassword("user");
-        member.setName("유저네임");
+        member.setPassword("saveUser");
+        member.setName("saveUser");
         memberRepo.save(member);
 
         Blog blog = new Blog();
@@ -37,36 +38,59 @@ class BlogRepositoryTest {
         blog.setDescription("블로그의 블로그입니다");
         blog.setName("태그도 입력되라");
 
-
         blogRepo.save(blog);
 
-        assertThat(blogRepo.findById(2L).get().getTag()).isEqualTo("태그없음");
+        assertThat(blogRepo.findById(1L).get().getTag()).isEqualTo("태그없음");
 
     }
 
 
     @Test
-    public void findByName() {
+    public void findByNameContaining() {
 
-        for (long i = 0; i < 10 ; i++) {
+        for (long i = 0; i < 5; i++) {
 
             Member member = new Member();
-            member.setId("user"+i);
+            member.setId("findByName" + i);
             member.setRole(Role.ROLE_MEMBER);
             member.setPassword("user");
-            member.setName("유저네임");
+            member.setName("findByName" + i);
             memberRepo.save(member);
 
             Blog blog = new Blog();
             blog.setDescription("블로그입니다");
-            blog.setMember(memberRepo.findById(i+1L).get());
-            blog.setName("findByName"+i);
+            blog.setMember(memberRepo.findMemberByName("findByName" + i).get());
+            blog.setName("findByName" + i);
             blogRepo.save(blog);
         }
 
         List<Blog> findList = blogRepo.findBlogByNameContaining("findByName");
 
-        assertThat(findList.size()).isEqualTo(10);
+        assertThat(findList.size()).isEqualTo(5);
 
     }
+
+    @Test
+    public void findBlogByMember_id() {
+
+        Member member = new Member();
+        member.setId("user");
+        member.setRole(Role.ROLE_MEMBER);
+        member.setPassword("user");
+        member.setName("findMemberName");
+        memberRepo.save(member);
+
+        Blog blog = new Blog();
+        blog.setMember(memberRepo.findMemberByName("findMemberName").get());
+        blog.setDescription("블로그입니다");
+        blog.setName("블로그");
+        blogRepo.save(blog);
+
+        Blog findBlog = blogRepo.findBlogByMember_Id("user").get();
+
+        assertThat(findBlog.getMember().getId()).isEqualTo("user");
+
+
+    }
+
 }

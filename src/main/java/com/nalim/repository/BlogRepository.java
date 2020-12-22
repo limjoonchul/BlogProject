@@ -12,8 +12,8 @@ import java.util.Optional;
 public interface BlogRepository extends CrudRepository<Blog, Long> {
 
     public List<Blog> findBlogByNameContaining(String name);
-    public Blog findBlogByName(String name);
 
+    public Optional<Blog> findBlogByMember_Id(String member_id);
 
 
 }
