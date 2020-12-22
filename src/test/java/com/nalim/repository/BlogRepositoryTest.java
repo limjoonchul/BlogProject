@@ -48,23 +48,23 @@ class BlogRepositoryTest {
     @Test
     public void findByName() {
 
-        Member member = new Member();
-        member.setId("findName");
-        member.setRole(Role.ROLE_MEMBER);
-        member.setPassword("user");
-        member.setName("유저네임");
-        memberRepo.save(member);
+        for (long i = 0; i < 10 ; i++) {
 
-        for (int i = 0; i < 10 ; i++) {
+            Member member = new Member();
+            member.setId("user"+i);
+            member.setRole(Role.ROLE_MEMBER);
+            member.setPassword("user");
+            member.setName("유저네임");
+            memberRepo.save(member);
+
             Blog blog = new Blog();
-//            blog.setMember(memberRepo.findById(1L).get());
             blog.setDescription("블로그입니다");
+            blog.setMember(memberRepo.findById(i+1L).get());
             blog.setName("findByName"+i);
             blogRepo.save(blog);
         }
 
         List<Blog> findList = blogRepo.findBlogByNameContaining("findByName");
-
 
         assertThat(findList.size()).isEqualTo(10);
 
