@@ -9,7 +9,8 @@ import javax.persistence.*;
 @Setter
 @Entity
 public class Member {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long seq;
 
     @Column(unique = true, nullable = false, columnDefinition = "varchar(20)")
