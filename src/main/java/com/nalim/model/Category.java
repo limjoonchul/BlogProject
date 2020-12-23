@@ -19,9 +19,13 @@ public class Category {
     @Column(name = "Category_name", unique = true, nullable = false, columnDefinition = "varchar(20)")
     private String name;
 
-    @Lob
-    private byte[] logo;
+    private String showType;
 
-//    @OneToMany(mappedBy = "category")
-//    private List<Post> postList = new ArrayList<>();
+    private int cntPost;
+
+    private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "Blog_seq")
+    private Blog blog;
 }
