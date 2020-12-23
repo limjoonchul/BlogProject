@@ -25,20 +25,21 @@ public class Post {
 
     @Temporal(TemporalType.TIMESTAMP)
     @CreationTimestamp
-    private Date creaDate;
+    private Date createDate;
 
     @ManyToOne
     @JoinColumn(name = "Member_seq")
     private Member member;
 
-    @OneToMany
-    private List<Category> categoryList = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "Category_seq")
+    private Category category;
 
     @ManyToOne
     @JoinColumn(name = "Blog_seq")
     private Blog blog;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER)  // comment에서 post를 참조하는 필드명
+    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = CascadeType.ALL)  // comment에서 post를 참조하는 필드명
     List<Comment> commentList = new ArrayList<>();
 
 }
