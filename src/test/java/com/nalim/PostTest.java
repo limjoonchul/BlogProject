@@ -144,7 +144,7 @@ public class PostTest {
         }
     }
 
-    @Test
+//    @Test
     public void findByTitle() {
         Optional<Post> findPost = postRepository.findById(300L);
 
@@ -162,6 +162,17 @@ public class PostTest {
         for (Post post : postList) {
             System.out.println(post.getTitle());
             assertThat(post.getTitle()).contains("0");
+        }
+    }
+
+    @Test
+    public void findByMemberName(){
+        Post post = postRepository.findById(1L).get();
+
+        List<Post> findUserName = postRepository.findByMemberName(post.getSeq());
+        for (Post post1: findUserName) {
+            System.out.println(post1.getMember().getName());
+            assertThat(post1.getMember().getName()).isEqualTo("멤버");
         }
     }
 
