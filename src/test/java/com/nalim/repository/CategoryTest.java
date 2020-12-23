@@ -1,18 +1,13 @@
-package com.nalim;
+package com.nalim.repository;
 
 import com.nalim.model.Category;
 import com.nalim.repository.CategoryRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
-import java.util.Optional;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class CategoryTest {
 
@@ -34,11 +29,9 @@ public class CategoryTest {
         fileInputStream.read(picture);
         fileInputStream.close();
 
-        category.setLogo(picture);
 
         categoryRepository.save(category);
         // assert로 테스트해보기, 전체적으로 테스트해보기
-
 
     }
 
@@ -55,8 +48,6 @@ public class CategoryTest {
 //
 //
 //        }
-
-
 
     }
 }

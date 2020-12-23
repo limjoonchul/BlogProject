@@ -39,7 +39,7 @@ public class Post {
     @JoinColumn(name = "Blog_seq")
     private Blog blog;
 
-    @OneToMany(mappedBy = "post", fetch = FetchType.EAGER, cascade = CascadeType.ALL)  // comment에서 post를 참조하는 필드명
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)  // comment에서 post를 참조하는 필드명
     List<Comment> commentList = new ArrayList<>();
 
 }

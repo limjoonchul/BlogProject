@@ -75,7 +75,7 @@
 
     </dependencies>
 
-    <build>g
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,4 +1,4 @@
-package com.nalim;
+package com.nalim.repository;
 
 import com.nalim.model.Blog;
 import com.nalim.model.Category;
@@ -9,7 +9,6 @@ import com.nalim.repository.CategoryRepository;
 import com.nalim.repository.MemberRepository;
 import com.nalim.repository.PostRepository;
 
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
-//@RunWith(SpringRunner.class)
 @SpringBootTest
 public class PostTest {
 

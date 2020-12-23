@@ -1,21 +1,17 @@
-package com.nalim;
+package com.nalim.repository;
 
 import com.nalim.model.Comment;
 import com.nalim.model.Member;
 import com.nalim.model.Post;
-import com.nalim.model.Role;
 import com.nalim.repository.CommentRepository;
 import com.nalim.repository.MemberRepository;
 import com.nalim.repository.PostRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class CommentTest {
 
