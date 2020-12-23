@@ -4,12 +4,14 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
 public class Member {
     @Id
+    @GeneratedValue
     private Long seq;
 
     @Column(unique = true, nullable = false, columnDefinition = "varchar(20)")
@@ -26,4 +28,11 @@ public class Member {
 
     @Enumerated(EnumType.STRING)
     private Role role;
+
+    @OneToOne(mappedBy = "member")
+    private Blog blog;
+
+    @OneToMany(mappedBy = "member")
+    private List<Comment> commentList;
+
 }

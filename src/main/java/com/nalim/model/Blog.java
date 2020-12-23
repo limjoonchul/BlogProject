@@ -2,7 +2,10 @@ package com.nalim.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.DateType;
 
@@ -14,9 +17,12 @@ import java.util.StringTokenizer;
 
 @Setter
 @Getter
+@ToString
 @Entity
+@DynamicInsert
 public class Blog {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(generator = "seq")
     private Long seq;
 
     @Column(unique = true, nullable = false, updatable = false, columnDefinition = "varchar(20)")
@@ -25,11 +31,11 @@ public class Blog {
     @Column(nullable = false, columnDefinition = "varchar(50)")
     private String description;
 
-    @Convert(converter = ListToStringConverter.class)
-    private List<String> tag;
+    @Column(columnDefinition = "varchar(255) default '태그없음'")
+    private String tag;
 
     @Temporal(TemporalType.DATE)
-//    @CreationTimestamp
+    @CreationTimestamp
     private Date createDate;
 
 //    @Temporal(TemporalType.DATE)
