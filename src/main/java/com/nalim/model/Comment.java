@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -16,8 +17,7 @@ public class Comment {
     @Column(nullable = false, columnDefinition = "text")
     private String content;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
+    private LocalDateTime createDate;
 
     @ManyToOne
     @JoinColumn(name = "Member_seq")

@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Optional;
 
 @SpringBootTest
-public class CommentTest {
+public class CommentRepositoryTest {
 
     @Autowired
     private CommentRepository commentRepository;

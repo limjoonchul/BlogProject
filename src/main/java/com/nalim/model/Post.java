@@ -5,6 +5,8 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,9 +25,7 @@ public class Post {
     @Column(nullable = false, columnDefinition = "text")
     private String content;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreationTimestamp
-    private Date createDate;
+    private LocalDateTime createDate;
 
     @ManyToOne
     @JoinColumn(name = "Member_seq")
