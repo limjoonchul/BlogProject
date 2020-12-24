@@ -45,4 +45,7 @@ public class Blog {
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     private List<Post> postList = new ArrayList<>();
 
+    @Lob
+    private byte[] Logo;
+
 }
