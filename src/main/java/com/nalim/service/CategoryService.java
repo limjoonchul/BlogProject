@@ -2,6 +2,8 @@ package com.nalim.service;
 
 import com.nalim.model.Category;
 
+import java.util.List;
+
 public interface CategoryService {
 
     void createCategory(Category category);
@@ -10,5 +12,5 @@ public interface CategoryService {
 
     void deleteCategory(Category category);
 
-    void getCategoryList();
+    List<Category> getCategoryList();
 }
