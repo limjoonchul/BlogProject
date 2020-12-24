@@ -25,6 +25,7 @@ public class Post {
     @Column(nullable = false, columnDefinition = "text")
     private String content;
 
+    @CreationTimestamp
     private LocalDateTime createDate;
 
     @ManyToOne
