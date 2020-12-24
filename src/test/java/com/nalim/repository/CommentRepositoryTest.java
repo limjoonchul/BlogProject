@@ -24,7 +24,7 @@ public class CommentRepositoryTest {
     @Autowired
     private PostRepository postRepository;
 
-//    @Test
+    @Test
     public void insertTest(){
 
         Comment comment = new Comment();
@@ -68,7 +68,7 @@ public class CommentRepositoryTest {
         }
     }
 
-    @Test
+//    @Test
     public void updateTest(){
         Optional<Comment> findComment = commentRepository.findById(14L);
         if (findComment.isPresent()){
