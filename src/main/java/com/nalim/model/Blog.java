@@ -8,8 +8,10 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.DateType;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,13 +36,7 @@ public class Blog {
     @Column(columnDefinition = "varchar(255) default '태그없음'")
     private String tag;
 
-    @Temporal(TemporalType.DATE)
-    @CreationTimestamp
-    private Date createDate;
-
-//    @Temporal(TemporalType.DATE)
-//    @UpdateTimestamp
-//    private Date updateDate;
+    private LocalDate createDate = LocalDate.now();
 
     @OneToOne
     @JoinColumn(name = "Member_seq")
