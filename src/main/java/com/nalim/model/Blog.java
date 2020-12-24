@@ -12,6 +12,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +37,8 @@ public class Blog {
     @Column(columnDefinition = "varchar(255) default '태그없음'")
     private String tag;
 
-    private LocalDate createDate = LocalDate.now();
+    @CreationTimestamp
+    private LocalDateTime createDate;
 
     @OneToOne
     @JoinColumn(name = "Member_seq")
