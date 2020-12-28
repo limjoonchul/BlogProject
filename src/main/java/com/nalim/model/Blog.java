@@ -53,4 +53,7 @@ public class Blog {
 //    @Column(columnDefinition = "boolean default 'false'")
     private boolean deleted = false;
 
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
+    private List<Category> categoryList = new ArrayList<>();
+
 }
