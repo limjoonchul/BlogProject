@@ -8,8 +8,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.type.DateType;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,19 +31,14 @@ public class Blog {
     @Column(unique = true, nullable = false, updatable = false, columnDefinition = "varchar(20)")
     private String name;
 
-    @Column(nullable = false, columnDefinition = "varchar(50)")
-    private String description;
+    @Column(columnDefinition = "int default 10")
+    private int cntPost;
 
     @Column(columnDefinition = "varchar(255) default '태그없음'")
     private String tag;
 
-    @Temporal(TemporalType.DATE)
     @CreationTimestamp
-    private Date createDate;
-
-//    @Temporal(TemporalType.DATE)
-//    @UpdateTimestamp
-//    private Date updateDate;
+    private LocalDateTime createDate;
 
     @OneToOne
     @JoinColumn(name = "Member_seq")
@@ -48,5 +46,14 @@ public class Blog {
 
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     private List<Post> postList = new ArrayList<>();
+
+    @Lob
+    private byte[] Logo;
+
+//    @Column(columnDefinition = "boolean default 'false'")
+    private boolean deleted = false;
+
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
+    private List<Category> categoryList = new ArrayList<>();
 
 }
