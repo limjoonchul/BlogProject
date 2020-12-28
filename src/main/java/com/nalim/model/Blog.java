@@ -50,4 +50,7 @@ public class Blog {
     @Lob
     private byte[] Logo;
 
+//    @Column(columnDefinition = "boolean default 'false'")
+    private boolean deleted = false;
+
 }
