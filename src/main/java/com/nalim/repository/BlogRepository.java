@@ -17,5 +17,7 @@ public interface BlogRepository extends CrudRepository<Blog, Long> {
 
     public Optional<Blog> findByName(String name);
 
+    public List<Blog> findBlogByTagContaining(String tag);
+
 
 }

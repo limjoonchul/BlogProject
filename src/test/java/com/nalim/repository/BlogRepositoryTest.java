@@ -103,6 +103,31 @@ class BlogRepositoryTest {
 
     }
 
+    @Test
+    public void findByTagContaining() {
+
+        for (long i = 0; i < 5; i++) {
+
+            Member member = new Member();
+            member.setId("findByTag" + i);
+            member.setRole(Role.ROLE_MEMBER);
+            member.setPassword("user");
+            member.setName("userName" + i);
+            memberRepo.save(member);
+
+            Blog blog = new Blog();
+            blog.setMember(memberRepo.findMemberByName("userName" + i).get());
+            blog.setName("blogName" + i);
+            blog.setTag("findByTag" + i);
+            blogRepo.save(blog);
+        }
+
+        List<Blog> findList = blogRepo.findBlogByTagContaining("tag");
+
+        assertThat(findList.size()).isEqualTo(5);
+
+    }
+
 }
 
 
