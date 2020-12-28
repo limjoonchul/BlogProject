@@ -31,8 +31,8 @@ public class Blog {
     @Column(unique = true, nullable = false, updatable = false, columnDefinition = "varchar(20)")
     private String name;
 
-    @Column(nullable = false, columnDefinition = "varchar(50)")
-    private String description;
+    @Column(columnDefinition = "int default 10")
+    private int cntPost;
 
     @Column(columnDefinition = "varchar(255) default '태그없음'")
     private String tag;

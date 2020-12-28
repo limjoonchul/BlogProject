@@ -35,7 +35,6 @@ class BlogRepositoryTest {
 
         Blog blog = new Blog();
         blog.setMember(memberRepo.findById(1L).get());
-        blog.setDescription("블로그의 블로그입니다");
         blog.setName("블로그입력");
 
         blogRepo.save(blog);
@@ -58,7 +57,6 @@ class BlogRepositoryTest {
             memberRepo.save(member);
 
             Blog blog = new Blog();
-            blog.setDescription("블로그입니다");
             blog.setMember(memberRepo.findMemberByName("findByName" + i).get());
             blog.setName("findByName" + i);
             blogRepo.save(blog);
@@ -82,7 +80,6 @@ class BlogRepositoryTest {
 
         Blog blog = new Blog();
         blog.setMember(memberRepo.findMemberByName("findMemberName").get());
-        blog.setDescription("블로그입니다");
         blog.setName("블로그");
         blogRepo.save(blog);
 
@@ -96,7 +93,6 @@ class BlogRepositoryTest {
     public void findBlogByName() {
 
         Blog blog = new Blog();
-        blog.setDescription("블로그입니다");
         blog.setName("찾을블로그");
         blogRepo.save(blog);
 
