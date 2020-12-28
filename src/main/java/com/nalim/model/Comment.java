@@ -2,8 +2,10 @@ package com.nalim.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -16,8 +18,8 @@ public class Comment {
     @Column(nullable = false, columnDefinition = "text")
     private String content;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createDate;
+    @CreationTimestamp
+    private LocalDateTime createDate;
 
     @ManyToOne
     @JoinColumn(name = "Member_seq")

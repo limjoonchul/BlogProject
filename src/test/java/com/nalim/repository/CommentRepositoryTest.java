@@ -13,7 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Optional;
 
 @SpringBootTest
-public class CommentTest {
+public class CommentRepositoryTest {
 
     @Autowired
     private CommentRepository commentRepository;
@@ -24,7 +24,7 @@ public class CommentTest {
     @Autowired
     private PostRepository postRepository;
 
-//    @Test
+    @Test
     public void insertTest(){
 
         Comment comment = new Comment();
@@ -68,7 +68,7 @@ public class CommentTest {
         }
     }
 
-    @Test
+//    @Test
     public void updateTest(){
         Optional<Comment> findComment = commentRepository.findById(14L);
         if (findComment.isPresent()){
